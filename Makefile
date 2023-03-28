@@ -5,7 +5,7 @@
 
 cc 				= gcc
 target 			= main.c
-appname 		= main.exe
+appname 		= main.exe 
 extra_cflags	= -fopenmp
 cc_std 			= -std=c11
 cflags 			= -Wextra -Wall -I
