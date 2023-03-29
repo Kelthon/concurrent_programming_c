@@ -3,23 +3,23 @@
 # author: KLT
 # date: 2023/03/09
 
-cc 				= gcc
-target 			= main.c
-appname 		= main.exe 
-extra_cflags	= -fopenmp
-cc_std 			= -std=c11
-cflags 			= -Wextra -Wall -I
+cc 				:= gcc
+target 			:= main.c
+appname 		:= main.exe 
+extra_cflags	:= -fopenmp
+cc_std 			:= -std=c11
+cflags 			:= -Wextra -Wall -I
 
-bin_dir 		= ./bin
-src_dir 		= ./src
-obj_dir 		= ./obj
-include_dir 	= ./include
+bin_dir 		:= ./bin
+src_dir 		:= ./src
+obj_dir 		:= ./obj
+include_dir 	:= ./include
 
-source_files 	:= $(wildcard $(src_dir)/*.c)
 target_path		:= $(addprefix $(src_dir)/,$(target))
-filtered_files 	:= $(filter-out $(target_path),$(source_files))
-obj_paths 		:= $(patsubst $(src_dir)/%.c,$(obj_dir)/%.o,$(filtered_files))
-obj				:= $(notdir $(obj_paths))
+source_files 	= $(wildcard $(src_dir)/*.c)
+filtered_files 	= $(filter-out $(target_path),$(source_files))
+obj_paths 		= $(patsubst $(src_dir)/%.c,$(obj_dir)/%.o,$(filtered_files))
+obj				= $(notdir $(obj_paths))
 
 .PHONY: all
 all: compile run
