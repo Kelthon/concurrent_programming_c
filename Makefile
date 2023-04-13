@@ -13,7 +13,7 @@ CC_STD 			:= -std=c11
 CXX_STD			:= -std=c++17
 
 # Define a extra flags and diretives for compilation
-EXTRA_FLAGS 	:= -fopenmp -lopengl32 -lglu32 -lfreeglut
+EXTRA_FLAGS 	:= -fopenmp
 
 # Define directories
 BIN_DIR 		:= ./bin
