@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <omp.h>
 
 double cp_elapsed_time(double start_time, double end_time) {
