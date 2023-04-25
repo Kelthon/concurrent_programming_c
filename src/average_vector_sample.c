@@ -11,8 +11,8 @@
 #include "benchmark.c"
 
 #define CP_NUMBER_THREADS 4
-// #define CP_VECTOR_MAX_SIZE 500000000
-#define CP_VECTOR_MAX_SIZE 500
+#define CP_VECTOR_MAX_SIZE 500000000
+// #define CP_VECTOR_MAX_SIZE 500
 #define CP_VECTOR_MIN_VALUE 100000
 #define CP_VECTOR_MAX_VALUE 1
 
@@ -104,7 +104,7 @@ int main()
 
     // Serial
     serial_start_time = omp_get_wtime();
-    average = cp_vector_average(vector);
+    average = cp_serial_average(vector);
     serial_end_time = omp_get_wtime();
     serial_elapsed_time = cp_elapsed_time(serial_start_time, serial_end_time);
     printf("serial average: %.2f elapsed time: %.1lf seconds\n", average, serial_elapsed_time);
