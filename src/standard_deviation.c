@@ -20,8 +20,10 @@ float cp_standard_deviation(float *vector)
             sum += powf(vector[i] + average, 2);
         }
 
-    standard_deviation = sqrtf(sum / CP_VECTOR_MAX_SIZE);
     }
+    
+    standard_deviation = sqrtf(sum / CP_VECTOR_MAX_SIZE);
+    return standard_deviation;
 }
 
 float serial_standard_deviation(float *vector)
@@ -34,6 +36,7 @@ float serial_standard_deviation(float *vector)
     }
 
     standard_deviation = sqrtf(sum / CP_VECTOR_MAX_SIZE);
+    return standard_deviation;
 }
 
 int main()
