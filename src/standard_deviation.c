@@ -10,7 +10,7 @@
 float cp_standard_deviation(float *vector)
 {
     
-    float standard_deviation, average = cp_serial_average(vector), sum = 0;
+    float standard_deviation, average = cp_vector_average(vector), sum = 0;
     #pragma omp parallel num_threads(CP_NUMBER_THREADS)
     {
 
@@ -28,7 +28,7 @@ float cp_standard_deviation(float *vector)
 
 float serial_standard_deviation(float *vector)
 {
-    float standard_deviation, average = cp_vector_average(vector), sum = 0;
+    float standard_deviation, average = cp_serial_average(vector), sum = 0;
 
     for(int i = 0; i < CP_VECTOR_MAX_SIZE; i++)
     {
