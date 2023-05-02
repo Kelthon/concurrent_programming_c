@@ -20,9 +20,29 @@ Isso não significa que sua execução seja continua, podendo ser suspensa e ret
 
 A também a possibilidade de uso de tarefas desvinculadas, a qual não apresenta o comportamento anterior.
 
-## Tasks com OpenMP
+## Diferenças entre Sections e Tasks
 
-A utilização das tasks com OpenMp segue com o uso das diretivas. por exemplo:
+Enquanto as Sections são estáticas, dependentes entre si e apresentam uma quantidade maior de trabalho que é atribuída a cada thread, enquanto as taks são dinâmicas, indepedentes entre si e apresentam uma quantidade menor de trabalho que é atribuída a cada thread. Além disso as tasks podem ser usadas em regiões paralelas e não paralelas enquanto as sections só podem ser usadas em regiões paralelas.
+
+## Quando Utilizar tasks no OpenMP
+
+As tasks do OpenMP são utlizizadas em situações em que o trabalho a ser realizado é dividido em várias partes independentes que podem ser executadas em paralelo. Em geral, as tasks são recomendadas quando:
+
+1. Há muitas tarefas pequenas e independentes que podem ser executadas em paralelo, em vez de um único loop grande.
+
+1. O trabalho é dinâmico e não é possível prever qual tarefa será executada em cada momento.
+
+1. As tarefas têm diferentes tempos de execução e precisam ser equilibradas entre as threads disponíveis.
+
+1. É necessário especificar dependências entre tarefas para evitar condições de corrida e garantir que as tarefas sejam executadas na ordem correta.
+
+### Exemplos de utilização
+
+Alguns exemplos de aplicação de tasks do OpenMP incluem processamento de imagens, simulações físicas, processamento de sinais digitais, computação financeira, dentre outras aplicações que podem se beneficiar da execução paralela de tarefas independentes.
+
+## Utilização de tasks com OpenMP
+
+A utilização das tasks com OpenMp segue com o uso das diretivas `#pragma omp` em uma região a ser paralelizada. por exemplo:
 
 A diretiva `task` especifica uma uma task explicita
 
