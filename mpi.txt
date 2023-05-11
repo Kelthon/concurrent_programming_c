@@ -1,0 +1,2 @@
+mpicc -o <outpu_file> <source_file>
+mpiexec -n <number_proccess> <source_file>
