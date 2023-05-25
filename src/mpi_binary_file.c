@@ -34,18 +34,19 @@ int main(int arc, char **argv) {
   int *subvector = (int *) calloc(subvector_size, sizeof(int));
   int *vector = gerar_vetor_binario(FILE_SIZE);
 
-  MPI_Gather(vector, FILE_SIZE, MPI_INT, subvector, subvector_size, MPI_INT, 0, MPI_COMM_WORLD);
 
+  MPI_Scatter(subvector, subvector_size, MPI_INT, vector, FILE_SIZE, MPI_INT, 0, MPI_COMM_WORLD);
   for(int i = 0; i < subvector_size; i++) {
     if(subvector[i] == 1) ones++;
   }
 
-  MPI_Scatter(subvector, subvector_size, MPI_INT, total_ones, nprocs, MPI_INT, 0, MPI_COMM_WORLD);
   
+  MPI_Gather(&ones, 1, MPI_INT, total_ones, 1, MPI_INT, 0, MPI_COMM_WORLD);
   for(int i = 0; i < nprocs; i++) {
     ones += total_ones[i];
   }
 
+  printf("ones number: %d\n", ones);
   if(ones % 2 != 0) {
     vector = (int *) realloc(vector, FILE_SIZE+1);
     vector[FILE_SIZE+1] = 1;
